@@ -1,7 +1,7 @@
 import math
 
 import pygame
-from pygame.locals import *
+from pygame.locals import QUIT, K_ESCAPE
 
 
 def sine(speed: float, time: int, how_far: float, overall_y: int) -> int:
