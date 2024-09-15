@@ -14,8 +14,9 @@ from src.services.visualization_service import VisualizationService
 from src.utils.tools import (
     update_background_using_scroll,
     update_press_key,
-    is_close_app_event
+    is_close_app_event,
 )
+
 
 GlobalState.load_main_screen()
 VisualizationService.load_main_game_displays()

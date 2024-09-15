@@ -1,8 +1,10 @@
 import pygame
+
 from pygame.locals import K_LEFT, K_RIGHT, K_UP, K_DOWN, K_a, K_d, K_w, K_s
 
 from src.config import Config
 from src.services.visualization_service import VisualizationService
+
 
 vec = pygame.math.Vector2
 
