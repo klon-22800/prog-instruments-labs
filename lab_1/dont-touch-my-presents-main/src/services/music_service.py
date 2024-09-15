@@ -11,7 +11,7 @@ class MusicService:
         return [
             AUDIO_DIR / "sleigh_ride.ogg",
             AUDIO_DIR / "merry_christmas.ogg",
-            AUDIO_DIR / "here_comes_santa.ogg"
+            AUDIO_DIR / "here_comes_santa.ogg",
         ]
 
     @staticmethod
@@ -19,7 +19,7 @@ class MusicService:
         return [
             AUDIO_DIR / "chop.wav",
             AUDIO_DIR / "chop_2.wav",
-            AUDIO_DIR / "chop_3.wav"
+            AUDIO_DIR / "chop_3.wav",
         ]
 
     @staticmethod
@@ -28,7 +28,7 @@ class MusicService:
             AUDIO_DIR / "cheer.wav",
             AUDIO_DIR / "cheer_2.wav",
             AUDIO_DIR / "cheer_3.wav",
-            AUDIO_DIR / "cheer_4.wav"
+            AUDIO_DIR / "cheer_4.wav",
         ]
 
     @staticmethod
