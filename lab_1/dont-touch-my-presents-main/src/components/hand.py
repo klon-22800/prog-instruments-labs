@@ -12,7 +12,14 @@ from src.utils.tools import sine
 
 
 class Hand(pygame.sprite.Sprite):
+    """class for enemy hands"""
+
     def __init__(self, hand_side: HandSide) -> None:
+        """contructor of Hand class
+
+        Args:
+            hand_side (HandSide): consts from HandSide
+        """
         super().__init__()
         self.new_spd = random.uniform(2.5, 3)
         self.new_y = 0
@@ -24,6 +31,7 @@ class Hand(pygame.sprite.Sprite):
         self._load_hand()
 
     def reset(self) -> None:
+        """function reset game settings"""
         self.new_spd = random.uniform(0.5, HAND_MAX_SPEED)
         self.can_score = True
 
@@ -40,6 +48,7 @@ class Hand(pygame.sprite.Sprite):
             self.new_x = LeftHand.START_X
 
     def _load_hand(self) -> None:
+        """loading hands image"""
         if self.side == HandSide.RIGHT:
             self._load_right_hand()
 
@@ -47,6 +56,7 @@ class Hand(pygame.sprite.Sprite):
             self._load_left_hand()
 
     def _load_left_hand(self) -> None:
+        """loading left hand image"""
         self.image = VisualizationService.get_left_hand_image()
         self.rect = self.image.get_rect()
         self.mask = pygame.mask.from_surface(self.image)
@@ -54,6 +64,7 @@ class Hand(pygame.sprite.Sprite):
         self.new_y = LeftHand.START_Y
 
     def _load_right_hand(self) -> None:
+        """loading right hand image"""
         self.image = VisualizationService.get_right_hand_image()
         self.rect = self.image.get_rect()
         self.mask = pygame.mask.from_surface(self.image)
@@ -63,6 +74,12 @@ class Hand(pygame.sprite.Sprite):
     def move(
         self, scoreboard: Scoreboard, player_position: pygame.math.Vector2
     ) -> None:
+        """function to calculate the player's position
+
+        Args:
+            scoreboard (Scoreboard): Scoreboard class to display the score
+            player_position (pygame.math.Vector2): coordinates vector of position
+        """
         self.new_x = sine(100.0, 620, 20.0, self.offset_x)
         self.new_y += self.new_spd
         self.rect.center = (self.new_x, self.new_y)
@@ -100,6 +117,11 @@ class Hand(pygame.sprite.Sprite):
             self.can_score = True
 
     def draw(self, screen: pygame.Surface) -> None:
+        """function for drawing hands
+
+        Args:
+            screen (pygame.Surface): game's surface
+        """
         dotted_line = VisualizationService.get_dotted_line()
         screen.blit(dotted_line, (0, self.rect.y + 53))
         screen.blit(self.image, self.rect)

@@ -39,6 +39,7 @@ all_sprites.add(H2)
 
 
 def main_menu_phase() -> None:
+    """function set object to main menu"""
     scoreboard.reset_current_score()
 
     events = pygame.event.get()
@@ -62,6 +63,7 @@ def main_menu_phase() -> None:
 
 
 def gameplay_phase() -> None:
+    """function set object to game window"""
     events = pygame.event.get()
 
     for event in events:
@@ -91,11 +93,13 @@ def gameplay_phase() -> None:
 
 
 def exit_game_phase() -> None:
+    """function exit game"""
     pygame.quit()
     sys.exit()
 
 
 def game_over() -> None:
+    """function closes the game and takes to the main menu"""
     P1.reset()
     H1.reset()
     H2.reset()

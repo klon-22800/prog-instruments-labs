@@ -1,4 +1,6 @@
 class Config:
+    """config settings"""
+
     FPS = 60
 
     # Screen Information

@@ -2,6 +2,7 @@ HAND_MAX_SPEED = 8
 
 
 class RightHand:
+    """coordinate constants for right hand"""
     START_X = 0
     START_Y = -40
     OFFSET_START = 260
@@ -9,6 +10,7 @@ class RightHand:
 
 
 class LeftHand:
+    """coordinate constants for left hand"""
     START_X = 0
     START_Y = -320
     OFFSET_START = -50
