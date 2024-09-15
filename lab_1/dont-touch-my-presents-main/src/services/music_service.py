@@ -2,12 +2,14 @@ import random
 
 import pygame
 
+from typing import List
+
 from paths import AUDIO_DIR
 
 
 class MusicService:
     @staticmethod
-    def get_background_musics():
+    def get_background_musics() -> List[str]:
         return [
             AUDIO_DIR / "sleigh_ride.ogg",
             AUDIO_DIR / "merry_christmas.ogg",
@@ -15,7 +17,7 @@ class MusicService:
         ]
 
     @staticmethod
-    def get_chop_musics():
+    def get_chop_musics() -> List[str]:
         return [
             AUDIO_DIR / "chop.wav",
             AUDIO_DIR / "chop_2.wav",
@@ -23,7 +25,7 @@ class MusicService:
         ]
 
     @staticmethod
-    def get_cheer_musics():
+    def get_cheer_musics() -> List[str]:
         return [
             AUDIO_DIR / "cheer.wav",
             AUDIO_DIR / "cheer_2.wav",
@@ -32,7 +34,7 @@ class MusicService:
         ]
 
     @staticmethod
-    def start_background_music():
+    def start_background_music() -> None:
         if pygame.mixer.music.get_busy():
             return
 
@@ -42,24 +44,24 @@ class MusicService:
         pygame.mixer.music.play()
 
     @staticmethod
-    def play_chop_sound():
+    def play_chop_sound() -> None:
         musics = MusicService.get_chop_musics()
         filename = random.choice(musics)
         chop = pygame.mixer.Sound(filename)
         pygame.mixer.Sound.play(chop)
 
     @staticmethod
-    def play_score_sound():
+    def play_score_sound() -> None:
         score_sfx = pygame.mixer.Sound(AUDIO_DIR / "score.wav")
         pygame.mixer.Sound.play(score_sfx)
 
     @staticmethod
-    def play_slap_sound():
+    def play_slap_sound() -> None:
         slap_sfx = pygame.mixer.Sound(AUDIO_DIR / "slap.wav")
         pygame.mixer.Sound.play(slap_sfx)
 
     @staticmethod
-    def play_cheer_sound():
+    def play_cheer_sound() -> None:
         musics = MusicService.get_cheer_musics()
         filename = random.choice(musics)
         cheer = pygame.mixer.Sound(filename)

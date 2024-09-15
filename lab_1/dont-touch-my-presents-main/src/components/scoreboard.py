@@ -5,28 +5,28 @@ from src.utils.tools import sine
 
 
 class Scoreboard:
-    def __init__(self):
+    def __init__(self) -> None:
         self._current_score = 0
         self._max_score = ScoreService.get_max_score()
 
-    def reset_current_score(self):
+    def reset_current_score(self) -> None:
         self._current_score = 0
 
-    def increase_current_score(self):
+    def increase_current_score(self) -> None:
         self._current_score += 1
 
-    def get_max_score(self):
+    def get_max_score(self) -> int:
         return self._max_score
 
-    def get_current_score(self):
+    def get_current_score(self) -> int:
         return self._current_score
 
-    def update_max_score(self):
+    def update_max_score(self) -> None:
         if self._current_score > self._max_score:
             ScoreService.update_max_score(self._current_score)
             self._max_score = self._current_score
 
-    def draw(self, screen):
+    def draw(self, screen: pygame.Surface) -> None:
         y = sine(200.0, 1280, 10.0, 40)
         show_score = VisualizationService.get_main_font().render(
             str(self._current_score), True, (0, 0, 0)

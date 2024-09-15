@@ -38,7 +38,7 @@ all_sprites.add(H1)
 all_sprites.add(H2)
 
 
-def main_menu_phase():
+def main_menu_phase() -> None:
     scoreboard.reset_current_score()
 
     events = pygame.event.get()
@@ -61,7 +61,7 @@ def main_menu_phase():
     )
 
 
-def gameplay_phase():
+def gameplay_phase() -> None:
     events = pygame.event.get()
 
     for event in events:
@@ -90,12 +90,12 @@ def gameplay_phase():
         game_over()
 
 
-def exit_game_phase():
+def exit_game_phase() -> None:
     pygame.quit()
     sys.exit()
 
 
-def game_over():
+def game_over() -> None:
     P1.reset()
     H1.reset()
     H2.reset()

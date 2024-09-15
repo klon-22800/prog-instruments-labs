@@ -10,7 +10,7 @@ vec = pygame.math.Vector2
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
         self.image = VisualizationService.get_player_image()
         self.rect = self.image.get_rect()
@@ -20,7 +20,7 @@ class Player(pygame.sprite.Sprite):
         self.acc = vec(0, 0)
         self.player_position = vec(0, 0)
 
-    def update(self):
+    def update(self) -> None:
         self.acc = vec(0, 0)
 
         pressed_keys = pygame.key.get_pressed()
@@ -52,13 +52,13 @@ class Player(pygame.sprite.Sprite):
 
         self.rect.center = self.pos
 
-    def draw(self, screen):
+    def draw(self, screen: pygame.Surface) -> None:
         screen.blit(
             VisualizationService.get_santa_hand(), (self.rect.x - 25, self.rect.y - 25)
         )
         screen.blit(self.image, self.rect)
 
-    def reset(self):
+    def reset(self) -> None:
         self.pos = vec((180, 550))
         self.vel = vec(0, 0)
         self.acc = vec(0, 0)

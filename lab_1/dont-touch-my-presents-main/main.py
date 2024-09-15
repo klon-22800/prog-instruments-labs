@@ -12,12 +12,12 @@ pygame.init()
 FramePerSec = pygame.time.Clock()
 
 
-def update_game_display():
+def update_game_display() -> None:
     pygame.display.update()
     FramePerSec.tick(Config.FPS)
 
 
-def main():
+def main() -> None:
     while True:
         if GlobalState.GAME_STATE == GameStatus.MAIN_MENU:
             main_menu_phase()
