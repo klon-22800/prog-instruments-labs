@@ -3,6 +3,7 @@ import random
 import pygame
 
 from src.components.hand_side import HandSide
+from src.components.hand_state import RightHand, LeftHand, HAND_MAX_SPEED
 from src.components.scoreboard import Scoreboard
 from src.config import Config
 from src.services.music_service import MusicService
@@ -23,18 +24,18 @@ class Hand(pygame.sprite.Sprite):
         self._load_hand()
 
     def reset(self):
-        self.new_spd = random.uniform(0.5, 8)
+        self.new_spd = random.uniform(0.5, HAND_MAX_SPEED)
         self.can_score = True
 
         if self.side == HandSide.RIGHT:
-            self.offset_x = random.randint(260, 380)
-            self.new_y = -40
-            self.new_x = 0
+            self.offset_x = random.randint(RightHand.OFFSET_START, RightHand.OFFSET_STOP)
+            self.new_y = RightHand.START_Y
+            self.new_x = RightHand.START_X
 
         if self.side == HandSide.LEFT:
-            self.offset_x = random.randint(-50, 120)
-            self.new_y = -320
-            self.new_x = 0
+            self.offset_x = random.randint(LeftHand.OFFSET_START, LeftHand.OFFSET_STOP)
+            self.new_y = LeftHand.START_Y
+            self.new_x = LeftHand.START_X
 
     def _load_hand(self):
         if self.side == HandSide.RIGHT:
@@ -47,15 +48,15 @@ class Hand(pygame.sprite.Sprite):
         self.image = VisualizationService.get_left_hand_image()
         self.rect = self.image.get_rect()
         self.mask = pygame.mask.from_surface(self.image)
-        self.offset_x = random.randint(-50, 120)
-        self.new_y = -320
+        self.offset_x = random.randint(LeftHand.OFFSET_START, LeftHand.OFFSET_STOP)
+        self.new_y = LeftHand.START_Y
 
     def _load_right_hand(self):
         self.image = VisualizationService.get_right_hand_image()
         self.rect = self.image.get_rect()
         self.mask = pygame.mask.from_surface(self.image)
-        self.offset_x = random.randint(260, 380)
-        self.new_y = -40
+        self.offset_x = random.randint(RightHand.OFFSET_START, RightHand.OFFSET_STOP)
+        self.new_y = RightHand.START_Y
 
     def move(self, scoreboard: Scoreboard, player_position):
         self.new_x = sine(100.0, 620, 20.0, self.offset_x)
@@ -74,18 +75,18 @@ class Hand(pygame.sprite.Sprite):
         if self.rect.top > Config.HEIGHT:
             self.rect.bottom = 0
             # Play Kung Fu Sound
-            self.new_spd = random.uniform(0.5, 8)
+            self.new_spd = random.uniform(0.5, HAND_MAX_SPEED)
 
             if self.side == HandSide.RIGHT:
-                self.offset_x = random.randint(260, 380)
-                self.new_y = -40
+                self.offset_x = random.randint(RightHand.OFFSET_START, RightHand.OFFSET_STOP)
+                self.new_y = RightHand.START_Y
 
             if self.side == HandSide.LEFT:
-                self.offset_x = random.randint(-50, 120)
-                self.new_y = -320
+                self.offset_x = random.randint(LeftHand.OFFSET_START, LeftHand.OFFSET_STOP)
+                self.new_y = LeftHand.START_Y
 
             if self.new_spd >= 6:
-                self.new_spd = 8
+                self.new_spd = HAND_MAX_SPEED
                 MusicService.play_chop_sound()
 
             self.can_score = True
