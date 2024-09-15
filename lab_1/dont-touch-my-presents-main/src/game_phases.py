@@ -11,7 +11,11 @@ from src.components.scoreboard import Scoreboard
 from src.global_state import GlobalState
 from src.services.music_service import MusicService
 from src.services.visualization_service import VisualizationService
-from src.utils.tools import update_background_using_scroll, update_press_key, is_close_app_event
+from src.utils.tools import (
+    update_background_using_scroll,
+    update_press_key,
+    is_close_app_event
+)
 
 GlobalState.load_main_screen()
 VisualizationService.load_main_game_displays()
@@ -47,9 +51,13 @@ def main_menu_phase():
             GlobalState.GAME_STATE = GameStatus.GAMEPLAY
 
     GlobalState.SCROLL = update_background_using_scroll(GlobalState.SCROLL)
-    VisualizationService.draw_background_with_scroll(GlobalState.SCREEN, GlobalState.SCROLL)
+    VisualizationService.draw_background_with_scroll(
+        GlobalState.SCREEN, GlobalState.SCROLL
+    )
     GlobalState.PRESS_Y = update_press_key(GlobalState.PRESS_Y)
-    VisualizationService.draw_main_menu(GlobalState.SCREEN, scoreboard.get_max_score(), GlobalState.PRESS_Y)
+    VisualizationService.draw_main_menu(
+        GlobalState.SCREEN, scoreboard.get_max_score(), GlobalState.PRESS_Y
+    )
 
 
 def gameplay_phase():
@@ -65,7 +73,9 @@ def gameplay_phase():
     H2.move(scoreboard, P1.player_position)
 
     GlobalState.SCROLL = update_background_using_scroll(GlobalState.SCROLL)
-    VisualizationService.draw_background_with_scroll(GlobalState.SCREEN, GlobalState.SCROLL)
+    VisualizationService.draw_background_with_scroll(
+        GlobalState.SCREEN, GlobalState.SCROLL
+    )
 
     P1.draw(GlobalState.SCREEN)
     H1.draw(GlobalState.SCREEN)

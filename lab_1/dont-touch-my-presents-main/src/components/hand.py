@@ -28,7 +28,9 @@ class Hand(pygame.sprite.Sprite):
         self.can_score = True
 
         if self.side == HandSide.RIGHT:
-            self.offset_x = random.randint(RightHand.OFFSET_START, RightHand.OFFSET_STOP)
+            self.offset_x = random.randint(
+                RightHand.OFFSET_START, RightHand.OFFSET_STOP
+            )
             self.new_y = RightHand.START_Y
             self.new_x = RightHand.START_X
 
@@ -78,11 +80,15 @@ class Hand(pygame.sprite.Sprite):
             self.new_spd = random.uniform(0.5, HAND_MAX_SPEED)
 
             if self.side == HandSide.RIGHT:
-                self.offset_x = random.randint(RightHand.OFFSET_START, RightHand.OFFSET_STOP)
+                self.offset_x = random.randint(
+                    RightHand.OFFSET_START, RightHand.OFFSET_STOP
+                )
                 self.new_y = RightHand.START_Y
 
             if self.side == HandSide.LEFT:
-                self.offset_x = random.randint(LeftHand.OFFSET_START, LeftHand.OFFSET_STOP)
+                self.offset_x = random.randint(
+                    LeftHand.OFFSET_START, LeftHand.OFFSET_STOP
+                )
                 self.new_y = LeftHand.START_Y
 
             if self.new_spd >= 6:
