@@ -25,8 +25,8 @@ scoreboard = Scoreboard()
 
 # Sprite Setup
 P1 = Player()
-H1 = Hand(HandSide.RIGHT)
-H2 = Hand(HandSide.LEFT)
+H1 = Hand(HandSide.right)
+H2 = Hand(HandSide.left)
 
 # Sprite Groups
 hands = pygame.sprite.Group()
@@ -46,19 +46,19 @@ def main_menu_phase() -> None:
 
     for event in events:
         if is_close_app_event(event):
-            GlobalState.GAME_STATE = GameStatus.GAME_END
+            GlobalState.game_state = GameStatus.game_end
             return
 
         if event.type == pygame.KEYDOWN:
-            GlobalState.GAME_STATE = GameStatus.GAMEPLAY
+            GlobalState.game_state = GameStatus.gammeplay
 
-    GlobalState.SCROLL = update_background_using_scroll(GlobalState.SCROLL)
+    GlobalState.scroll = update_background_using_scroll(GlobalState.scroll)
     VisualizationService.draw_background_with_scroll(
-        GlobalState.SCREEN, GlobalState.SCROLL
+        GlobalState.screen, GlobalState.scroll
     )
-    GlobalState.PRESS_Y = update_press_key(GlobalState.PRESS_Y)
+    GlobalState.press_y = update_press_key(GlobalState.press_y)
     VisualizationService.draw_main_menu(
-        GlobalState.SCREEN, scoreboard.get_max_score(), GlobalState.PRESS_Y
+        GlobalState.screen, scoreboard.get_max_score(), GlobalState.press_y
     )
 
 
@@ -75,15 +75,15 @@ def gameplay_phase() -> None:
     H1.move(scoreboard, P1.player_position)
     H2.move(scoreboard, P1.player_position)
 
-    GlobalState.SCROLL = update_background_using_scroll(GlobalState.SCROLL)
+    GlobalState.scroll = update_background_using_scroll(GlobalState.scroll)
     VisualizationService.draw_background_with_scroll(
-        GlobalState.SCREEN, GlobalState.SCROLL
+        GlobalState.screen, GlobalState.scroll
     )
 
-    P1.draw(GlobalState.SCREEN)
-    H1.draw(GlobalState.SCREEN)
-    H2.draw(GlobalState.SCREEN)
-    scoreboard.draw(GlobalState.SCREEN)
+    P1.draw(GlobalState.screen)
+    H1.draw(GlobalState.screen)
+    H2.draw(GlobalState.screen)
+    scoreboard.draw(GlobalState.screen)
 
     if pygame.sprite.spritecollide(P1, hands, False, pygame.sprite.collide_mask):
         scoreboard.update_max_score()
@@ -103,5 +103,5 @@ def game_over() -> None:
     P1.reset()
     H1.reset()
     H2.reset()
-    GlobalState.GAME_STATE = GameStatus.MAIN_MENU
+    GlobalState.game_state = GameStatus.main_menu
     time.sleep(0.5)

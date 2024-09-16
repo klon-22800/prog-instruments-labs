@@ -5,16 +5,24 @@ from src.config import Config
 
 
 class GlobalState:
-    """class for config main screen"""
+    """
+    Class for config main screen
+    
+    Attributes: 
+        game_state: current application status
+        screen: GUI object
+        scroll: parameter for drawing the screen when scrolling
+        press_y: parameter for monitoring button presses
 
-    GAME_STATE = GameStatus.MAIN_MENU
-    SCREEN = None
-    SCROLL = 0
-    PRESS_Y = 650
+    """
+    game_state = GameStatus.main_menu
+    screen = None
+    scroll = 0
+    press_y = 650
 
     @staticmethod
     def load_main_screen() -> None:
         """set setting for main screen"""
-        screen = pygame.display.set_mode((Config.WIDTH, Config.HEIGHT))
+        screen = pygame.display.set_mode((Config.width, Config.height))
         screen.fill((0, 255, 255))
-        GlobalState.SCREEN = screen
+        GlobalState.screen = screen

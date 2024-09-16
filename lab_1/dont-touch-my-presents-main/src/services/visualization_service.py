@@ -152,7 +152,7 @@ class VisualizationService:
         """
         credit_font = VisualizationService.get_credit_font_font()
         author_credits = credit_font.render("©GOODGIS 2022", True, (0, 0, 0))
-        credits_rect = author_credits.get_rect(center=(Config.WIDTH // 2, 620))
+        credits_rect = author_credits.get_rect(center=(Config.width // 2, 620))
         screen.blit(author_credits, credits_rect)
 
     @staticmethod
@@ -165,7 +165,7 @@ class VisualizationService:
         """
         score_font = VisualizationService.get_score_font()
         best_score = score_font.render(f"Best: {max_score}", True, (0, 0, 0))
-        best_score_rect = best_score.get_rect(center=(Config.WIDTH // 2, 220))
+        best_score_rect = best_score.get_rect(center=(Config.width // 2, 220))
         screen.blit(best_score, best_score_rect)
 
     @staticmethod

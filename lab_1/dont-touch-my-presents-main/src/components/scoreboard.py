@@ -54,6 +54,6 @@ class Scoreboard:
         show_score = VisualizationService.get_main_font().render(
             str(self._current_score), True, (0, 0, 0)
         )
-        score_rect = show_score.get_rect(center=(Config.WIDTH // 2, y + 30))
+        score_rect = show_score.get_rect(center=(Config.width // 2, y + 30))
         screen.blit(VisualizationService.get_score_backing(), (113, y))
         screen.blit(show_score, score_rect)

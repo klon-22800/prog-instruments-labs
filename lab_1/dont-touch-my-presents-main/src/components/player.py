@@ -30,27 +30,27 @@ class Player(pygame.sprite.Sprite):
         pressed_keys = pygame.key.get_pressed()
 
         if pressed_keys[K_LEFT] or pressed_keys[K_a]:
-            self.acc.x = -Config.ACC
+            self.acc.x = -Config.acc
         if pressed_keys[K_RIGHT] or pressed_keys[K_d]:
-            self.acc.x = +Config.ACC
+            self.acc.x = +Config.acc
         if pressed_keys[K_UP] or pressed_keys[K_w]:
-            self.acc.y = -Config.ACC
+            self.acc.y = -Config.acc
         if pressed_keys[K_DOWN] or pressed_keys[K_s]:
-            self.acc.y = +Config.ACC
+            self.acc.y = +Config.acc
 
-        self.acc.x += self.vel.x * Config.FRIC
-        self.acc.y += self.vel.y * Config.FRIC
+        self.acc.x += self.vel.x * Config.fric
+        self.acc.y += self.vel.y * Config.fric
         self.vel += self.acc
         self.pos += self.vel + 0.5 * self.acc
 
         self.player_position = self.pos.copy()
 
-        if self.pos.x > Config.WIDTH:
-            self.pos.x = Config.WIDTH
+        if self.pos.x > Config.width:
+            self.pos.x = Config.width
         if self.pos.x < 0:
             self.pos.x = 0
-        if self.pos.y > Config.HEIGHT:
-            self.pos.y = Config.HEIGHT
+        if self.pos.y > Config.height:
+            self.pos.y = Config.height
         if self.pos.y < 200:
             self.pos.y = 200
 

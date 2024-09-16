@@ -35,24 +35,24 @@ class Hand(pygame.sprite.Sprite):
         self.new_spd = random.uniform(0.5, HAND_MAX_SPEED)
         self.can_score = True
 
-        if self.side == HandSide.RIGHT:
+        if self.side == HandSide.right:
             self.offset_x = random.randint(
-                RightHand.OFFSET_START, RightHand.OFFSET_STOP
+                RightHand.offset_start, RightHand.offset_stop
             )
-            self.new_y = RightHand.START_Y
-            self.new_x = RightHand.START_X
+            self.new_y = RightHand.start_y
+            self.new_x = RightHand.start_x
 
-        if self.side == HandSide.LEFT:
-            self.offset_x = random.randint(LeftHand.OFFSET_START, LeftHand.OFFSET_STOP)
-            self.new_y = LeftHand.START_Y
-            self.new_x = LeftHand.START_X
+        if self.side == HandSide.left:
+            self.offset_x = random.randint(LeftHand.offset_start, LeftHand.offset_stop)
+            self.new_y = LeftHand.start_y
+            self.new_x = LeftHand.start_x
 
     def _load_hand(self) -> None:
         """loading hands image"""
-        if self.side == HandSide.RIGHT:
+        if self.side == HandSide.right:
             self._load_right_hand()
 
-        if self.side == HandSide.LEFT:
+        if self.side == HandSide.left:
             self._load_left_hand()
 
     def _load_left_hand(self) -> None:
@@ -60,16 +60,16 @@ class Hand(pygame.sprite.Sprite):
         self.image = VisualizationService.get_left_hand_image()
         self.rect = self.image.get_rect()
         self.mask = pygame.mask.from_surface(self.image)
-        self.offset_x = random.randint(LeftHand.OFFSET_START, LeftHand.OFFSET_STOP)
-        self.new_y = LeftHand.START_Y
+        self.offset_x = random.randint(LeftHand.offset_start, LeftHand.offset_stop)
+        self.new_y = LeftHand.start_y
 
     def _load_right_hand(self) -> None:
         """loading right hand image"""
         self.image = VisualizationService.get_right_hand_image()
         self.rect = self.image.get_rect()
         self.mask = pygame.mask.from_surface(self.image)
-        self.offset_x = random.randint(RightHand.OFFSET_START, RightHand.OFFSET_STOP)
-        self.new_y = RightHand.START_Y
+        self.offset_x = random.randint(RightHand.offset_start, RightHand.offset_stop)
+        self.new_y = RightHand.start_y
 
     def move(
         self, scoreboard: Scoreboard, player_position: pygame.math.Vector2
@@ -93,22 +93,22 @@ class Hand(pygame.sprite.Sprite):
             if scoreboard.get_current_score() % 5 == 0:
                 MusicService.play_cheer_sound()
 
-        if self.rect.top > Config.HEIGHT:
+        if self.rect.top > Config.height:
             self.rect.bottom = 0
             # Play Kung Fu Sound
             self.new_spd = random.uniform(0.5, HAND_MAX_SPEED)
 
-            if self.side == HandSide.RIGHT:
+            if self.side == HandSide.right:
                 self.offset_x = random.randint(
-                    RightHand.OFFSET_START, RightHand.OFFSET_STOP
+                    RightHand.offset_start, RightHand.offset_stop
                 )
-                self.new_y = RightHand.START_Y
+                self.new_y = RightHand.start_y
 
-            if self.side == HandSide.LEFT:
+            if self.side == HandSide.left:
                 self.offset_x = random.randint(
-                    LeftHand.OFFSET_START, LeftHand.OFFSET_STOP
+                    LeftHand.offset_start, LeftHand.offset_stop
                 )
-                self.new_y = LeftHand.START_Y
+                self.new_y = LeftHand.start_y
 
             if self.new_spd >= 6:
                 self.new_spd = HAND_MAX_SPEED

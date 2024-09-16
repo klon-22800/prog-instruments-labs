@@ -1,12 +1,20 @@
 class Config:
-    """config settings"""
+    """
+    Application configuration settings
 
-    FPS = 60
+    Attributes:
+        fps: maximum allowed frames per second
+        width: application GUI window width
+        height: application GUI window height
+        acc: player's acceleration coefficient 
+        fric: player's friction coefficient
+    """
+    fps = 60
 
     # Screen Information
-    WIDTH = 360
-    HEIGHT = 640
+    width = 360
+    height = 640
 
     # Movement
-    ACC = 1.2
-    FRIC = -0.10
+    acc = 1.2
+    fric = -0.10
