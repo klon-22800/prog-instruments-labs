@@ -6,8 +6,8 @@ class HandSide(Enum):
     enums for hands in game phase
 
     Attributes:
-        right: enum for right enemy hand
-        left: enum for left enemy hand
+        RIGHT: enum for right enemy hand
+        LEFT: enum for left enemy hand
     """
-    right = 0
-    left = 1
+    RIGHT = 0
+    LEFT = 1

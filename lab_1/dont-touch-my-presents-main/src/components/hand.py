@@ -35,24 +35,24 @@ class Hand(pygame.sprite.Sprite):
         self.new_spd = random.uniform(0.5, HAND_MAX_SPEED)
         self.can_score = True
 
-        if self.side == HandSide.right:
+        if self.side == HandSide.RIGHT:
             self.offset_x = random.randint(
                 RightHand.offset_start, RightHand.offset_stop
             )
             self.new_y = RightHand.start_y
             self.new_x = RightHand.start_x
 
-        if self.side == HandSide.left:
+        if self.side == HandSide.LEFT:
             self.offset_x = random.randint(LeftHand.offset_start, LeftHand.offset_stop)
             self.new_y = LeftHand.start_y
             self.new_x = LeftHand.start_x
 
     def _load_hand(self) -> None:
         """loading hands image"""
-        if self.side == HandSide.right:
+        if self.side == HandSide.RIGHT:
             self._load_right_hand()
 
-        if self.side == HandSide.left:
+        if self.side == HandSide.LEFT:
             self._load_left_hand()
 
     def _load_left_hand(self) -> None:
@@ -98,13 +98,13 @@ class Hand(pygame.sprite.Sprite):
             # Play Kung Fu Sound
             self.new_spd = random.uniform(0.5, HAND_MAX_SPEED)
 
-            if self.side == HandSide.right:
+            if self.side == HandSide.RIGHT:
                 self.offset_x = random.randint(
                     RightHand.offset_start, RightHand.offset_stop
                 )
                 self.new_y = RightHand.start_y
 
-            if self.side == HandSide.left:
+            if self.side == HandSide.LEFT:
                 self.offset_x = random.randint(
                     LeftHand.offset_start, LeftHand.offset_stop
                 )

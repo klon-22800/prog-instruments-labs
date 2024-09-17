@@ -25,8 +25,8 @@ scoreboard = Scoreboard()
 
 # Sprite Setup
 P1 = Player()
-H1 = Hand(HandSide.right)
-H2 = Hand(HandSide.left)
+H1 = Hand(HandSide.RIGHT)
+H2 = Hand(HandSide.LEFT)
 
 # Sprite Groups
 hands = pygame.sprite.Group()
@@ -46,11 +46,11 @@ def main_menu_phase() -> None:
 
     for event in events:
         if is_close_app_event(event):
-            GlobalState.game_state = GameStatus.game_end
+            GlobalState.game_state = GameStatus.GAME_END
             return
 
         if event.type == pygame.KEYDOWN:
-            GlobalState.game_state = GameStatus.gammeplay
+            GlobalState.game_state = GameStatus.GAMEPLAY
 
     GlobalState.scroll = update_background_using_scroll(GlobalState.scroll)
     VisualizationService.draw_background_with_scroll(
@@ -103,5 +103,5 @@ def game_over() -> None:
     P1.reset()
     H1.reset()
     H2.reset()
-    GlobalState.game_state = GameStatus.main_menu
+    GlobalState.game_state = GameStatus.MAIN_MENU
     time.sleep(0.5)

@@ -15,7 +15,7 @@ class GlobalState:
         press_y: parameter for monitoring button presses
 
     """
-    game_state = GameStatus.main_menu
+    game_state = GameStatus.MAIN_MENU
     screen = None
     scroll = 0
     press_y = 650

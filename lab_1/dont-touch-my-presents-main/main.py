@@ -21,11 +21,11 @@ def update_game_display() -> None:
 def main() -> None:
     """function controls the switching of game phases"""
     while True:
-        if GlobalState.game_state == GameStatus.main_menu:
+        if GlobalState.game_state == GameStatus.MAIN_MENU:
             main_menu_phase()
-        elif GlobalState.game_state == GameStatus.gammeplay:
+        elif GlobalState.game_state == GameStatus.GAMEPLAY:
             gameplay_phase()
-        elif GlobalState.game_state == GameStatus.game_end:
+        elif GlobalState.game_state == GameStatus.GAME_END:
             exit_game_phase()
 
         MusicService.start_background_music()
