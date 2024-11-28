@@ -5,6 +5,7 @@ from src.config import Config
 from src.game_phases import main_menu_phase, gameplay_phase, exit_game_phase
 from src.global_state import GlobalState
 from src.services.music_service import MusicService
+from src.logging import logger
 
 
 pygame.init()
@@ -20,13 +21,14 @@ def update_game_display() -> None:
 
 def main() -> None:
     """function controls the switching of game phases"""
+    logger.info("app is running")
     while True:
         if GlobalState.game_state == GameStatus.MAIN_MENU:
-            main_menu_phase()
+            main_menu_phase(logger)
         elif GlobalState.game_state == GameStatus.GAMEPLAY:
-            gameplay_phase()
+            gameplay_phase(logger)
         elif GlobalState.game_state == GameStatus.GAME_END:
-            exit_game_phase()
+            exit_game_phase(logger)
 
         MusicService.start_background_music()
         update_game_display()

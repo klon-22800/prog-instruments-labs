@@ -38,18 +38,19 @@ all_sprites.add(H1)
 all_sprites.add(H2)
 
 
-def main_menu_phase() -> None:
+def main_menu_phase(logger) -> None:
     """function set object to main menu"""
     scoreboard.reset_current_score()
-
     events = pygame.event.get()
 
     for event in events:
         if is_close_app_event(event):
             GlobalState.game_state = GameStatus.GAME_END
+            logger.info("try to close the app from main menu")
             return
 
         if event.type == pygame.KEYDOWN:
+            logger.info("launching gameplay phase")
             GlobalState.game_state = GameStatus.GAMEPLAY
 
     GlobalState.scroll = update_background_using_scroll(GlobalState.scroll)
@@ -62,12 +63,14 @@ def main_menu_phase() -> None:
     )
 
 
-def gameplay_phase() -> None:
+def gameplay_phase(logger) -> None:
     """function set object to game window"""
+
     events = pygame.event.get()
 
     for event in events:
         if is_close_app_event(event):
+            logger.info("try to close the app from gameplay phase")
             game_over()
             return
 
@@ -92,9 +95,10 @@ def gameplay_phase() -> None:
         game_over()
 
 
-def exit_game_phase() -> None:
+def exit_game_phase(logger) -> None:
     """function exit game"""
     pygame.quit()
+    logger.info("exit the app")
     sys.exit()
 
 

@@ -9,6 +9,7 @@ from src.config import Config
 from src.services.music_service import MusicService
 from src.services.visualization_service import VisualizationService
 from src.utils.tools import sine
+from src.logging import score_logger
 
 
 class Hand(pygame.sprite.Sprite):
@@ -85,6 +86,7 @@ class Hand(pygame.sprite.Sprite):
         self.rect.center = (self.new_x, self.new_y)
 
         if self.rect.top > player_position.y - 35 and self.can_score:
+            score_logger.info('increase score by 1')
             scoreboard.increase_current_score()
             self.can_score = False
 

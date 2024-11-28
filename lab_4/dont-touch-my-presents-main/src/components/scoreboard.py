@@ -4,6 +4,7 @@ from src.config import Config
 from src.services.score_service import ScoreService
 from src.services.visualization_service import VisualizationService
 from src.utils.tools import sine
+from src.logging import score_logger
 
 
 class Scoreboard:
@@ -13,6 +14,7 @@ class Scoreboard:
         """contructor of Scoreboard class"""
         self._current_score = 0
         self._max_score = ScoreService.get_max_score()
+        score_logger.info(f"load max score: {self._max_score}")
 
     def reset_current_score(self) -> None:
         """reseting current score"""
@@ -41,6 +43,7 @@ class Scoreboard:
     def update_max_score(self) -> None:
         """update picture of max score"""
         if self._current_score > self._max_score:
+            score_logger.info(f'new max score:{self._current_score}')
             ScoreService.update_max_score(self._current_score)
             self._max_score = self._current_score
 

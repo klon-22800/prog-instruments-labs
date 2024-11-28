@@ -1,7 +1,7 @@
 import json
 
 from paths import ROOT_DIR
-
+from src.logging import logger
 
 score_file_path = ROOT_DIR / "best_score.json"
 default_data = {"best": 0}
