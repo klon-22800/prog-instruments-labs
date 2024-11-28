@@ -1,0 +1,9 @@
+2024-11-28 23:16:00,397 - score_logger - INFO - load max score: 2
+2024-11-28 23:16:00,571 - base_logger - INFO - app is running
+2024-11-28 23:16:01,501 - base_logger - INFO - launching gameplay phase
+2024-11-28 23:16:05,030 - score_logger - INFO - increase score by 1
+2024-11-28 23:16:06,207 - score_logger - INFO - increase score by 1
+2024-11-28 23:16:08,535 - score_logger - INFO - increase score by 1
+2024-11-28 23:16:11,212 - score_logger - INFO - new max score:3
+2024-11-28 23:16:13,008 - base_logger - INFO - try to close the app from main menu
+2024-11-28 23:16:13,050 - base_logger - INFO - exit the app

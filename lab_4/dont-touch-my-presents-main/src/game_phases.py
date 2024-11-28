@@ -11,6 +11,7 @@ from src.components.scoreboard import Scoreboard
 from src.global_state import GlobalState
 from src.services.music_service import MusicService
 from src.services.visualization_service import VisualizationService
+from src.logging import debug_logger
 from src.utils.tools import (
     update_background_using_scroll,
     update_press_key,
@@ -89,6 +90,9 @@ def gameplay_phase(logger) -> None:
     scoreboard.draw(GlobalState.screen)
 
     if pygame.sprite.spritecollide(P1, hands, False, pygame.sprite.collide_mask):
+        for hand in hands:
+            debug_logger.debug(f"{hand.side} coordinates: X: {hand.new_x}; Y: {hand.new_y}")
+        debug_logger.debug(f"player coordinates: {P1.player_position}")
         scoreboard.update_max_score()
         MusicService.play_slap_sound()
         time.sleep(0.5)

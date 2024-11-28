@@ -84,6 +84,7 @@ class Hand(pygame.sprite.Sprite):
         self.new_x = sine(100.0, 620, 20.0, self.offset_x)
         self.new_y += self.new_spd
         self.rect.center = (self.new_x, self.new_y)
+       
 
         if self.rect.top > player_position.y - 35 and self.can_score:
             score_logger.info('increase score by 1')
