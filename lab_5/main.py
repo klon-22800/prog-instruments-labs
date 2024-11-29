@@ -133,6 +133,7 @@ def preprocess_text_only_A(text: str) -> List[str]:
         List[str]: preprocessed text
     """
     nltk.download('punkt_tab')
+    nltk.download('averaged_perceptron_tagger_rus')
     tokens = mystem.lemmatize(text.lower())
     text = " ".join(tokens)
     words = nltk.word_tokenize(text)
