@@ -132,6 +132,7 @@ def preprocess_text_only_A(text: str) -> List[str]:
     Returns:
         List[str]: preprocessed text
     """
+    nltk.download('punkt_tab')
     tokens = mystem.lemmatize(text.lower())
     text = " ".join(tokens)
     words = nltk.word_tokenize(text)
